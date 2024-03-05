@@ -9,15 +9,16 @@ import java.net.URL;
 public class RemoteLogServiceInvoker {
 
     private static final String USER_AGENT = "Mozilla/5.0";
-    private static String get_url = "";
+    private static String[] get_url = null;
+    private static int instance = 1;
 
-    public RemoteLogServiceInvoker(String invokerUrl) {
-        get_url = invokerUrl;
+    public RemoteLogServiceInvoker(String[] invokerUrls) {
+        get_url = invokerUrls;
     }
 
     public static String invoke(String[] args) throws IOException {
-
-        URL obj = new URL(get_url);
+        //instance
+        URL obj = new URL(get_url[instance]);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestMethod("GET");
         con.setRequestProperty("User-Agent", USER_AGENT);
