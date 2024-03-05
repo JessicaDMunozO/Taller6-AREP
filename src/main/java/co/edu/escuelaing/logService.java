@@ -2,15 +2,14 @@ package co.edu.escuelaing;
 
 import static spark.Spark.*;
 
-public class logService {
+public class LogService {
     public static void main(String... args) {
         port(getPort());
-        staticFiles.location("/public");
 
         get("hello", (req, res) -> "Hello Docker!");
-        get("string/:val", (req, res) -> {
-            Double sin = Math.sin(Math.toRadians(Double.valueOf(req.params(":val"))));
-            return "The result is: " + sin;
+        get("logservice", (req, res) -> {
+            res.type("application/json");
+            return "{logIn: \"05/03/2024\"}";
         });
     }
 
@@ -18,6 +17,6 @@ public class logService {
         if (System.getenv("PORT") != null) {
             return Integer.parseInt(System.getenv("PORT"));
         }
-        return 4567;
+        return 5000;
     }
 }
