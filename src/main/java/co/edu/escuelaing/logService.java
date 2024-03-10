@@ -2,6 +2,10 @@ package co.edu.escuelaing;
 
 import static spark.Spark.*;
 
+import java.util.Date;
+
+import org.json.JSONArray;
+
 import com.mongodb.client.MongoDatabase;
 
 public class LogService {
@@ -9,12 +13,17 @@ public class LogService {
         port(getPort());
 
         MongoDatabase database = MongoUtil.getDB();
-        UserDAO userDAO = new UserDAO(database);
+        Log log = new Log(database);
 
         get("logservice", (req, res) -> {
             res.type("application/json");
-            userDAO.listLastTenUsers();
-            return "{LogIn: \"05/03/2024\"}";
+
+            String param = req.queryParams("param");
+            String date = new Date().toString();
+            log.addLog(param, date);
+
+            JSONArray jsonArray = log.listLastTenLogs();
+            return jsonArray.toString();
         });
     }
 

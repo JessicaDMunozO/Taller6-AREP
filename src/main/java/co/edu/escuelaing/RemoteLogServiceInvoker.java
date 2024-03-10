@@ -11,17 +11,18 @@ public class RemoteLogServiceInvoker {
 
     private static final String USER_AGENT = "Mozilla/5.0";
     private static String[] get_url = null;
-    private static int instance = 1;
+    private static int instance = 0;
 
     public RemoteLogServiceInvoker(String[] invokerUrls) {
         get_url = invokerUrls;
     }
 
-    public static String invoke(String[] args) throws IOException {
+    public static String invoke(String param) throws IOException {
 
         URL obj = RoundRobin();
+        String urlParams = obj.toString() + "?param=" + param;
 
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        HttpURLConnection con = (HttpURLConnection) new URL(urlParams).openConnection();
         con.setRequestMethod("GET");
         con.setRequestProperty("User-Agent", USER_AGENT);
 
@@ -51,10 +52,10 @@ public class RemoteLogServiceInvoker {
     }
 
     private static URL RoundRobin() throws MalformedURLException {
-        if (instance < 3) {
+        if (instance < 2) {
             instance += 1;
         } else {
-            instance = 1;
+            instance = 0;
         }
         URL url = new URL(get_url[instance]);
         return url;

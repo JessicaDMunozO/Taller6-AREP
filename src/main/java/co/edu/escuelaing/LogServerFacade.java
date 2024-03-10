@@ -13,7 +13,8 @@ public class LogServerFacade {
 
         get("logservicefacade", (req, res) -> {
             res.type("application/json");
-            return invoker.invoke(args);
+            String param = req.queryParams("param");
+            return invoker.invoke(param);
         });
     }
 }

@@ -5,6 +5,6 @@ function msg() {
         document.getElementById("msg").innerHTML =
             this.responseText;
     };
-    xhttp.open("GET", "/logservicefacade");
+    xhttp.open("GET", "/logservicefacade?param=" + val);
     xhttp.send();
 }
