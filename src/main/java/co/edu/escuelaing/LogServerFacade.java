@@ -3,6 +3,7 @@ package co.edu.escuelaing;
 import static spark.Spark.*;
 
 public class LogServerFacade {
+
     private static final String[] LOG_SERVICE_URL = { "http://logservice1:35000/logservice",
             "http://logservice2:35000/logservice", "http://logservice3:35000/logservice" };
 

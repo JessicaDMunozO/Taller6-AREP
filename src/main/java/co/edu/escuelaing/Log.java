@@ -18,12 +18,23 @@ public class Log {
         this.logsCollection = database.getCollection("logs");
     }
 
+    /**
+     * Add a new registry to the collection
+     * 
+     * @param log  a string for the registry
+     * @param date the date of the log
+     */
     public void addLog(String log, String date) {
         Document newLog = new Document("log", log)
                 .append("date", date);
         logsCollection.insertOne(newLog);
     }
 
+    /**
+     * Retrieves the last ten logs from the collection
+     * 
+     * @return a JSONArray with the last ten logs
+     */
     public JSONArray listLastTenLogs() {
         ArrayList<Document> lastLogs = logsCollection.find().sort(Sorts.descending("date")).limit(10)
                 .into(new ArrayList<>());

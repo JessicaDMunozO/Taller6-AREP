@@ -18,7 +18,6 @@ public class RemoteLogServiceInvoker {
     }
 
     public static String invoke(String param) throws IOException {
-
         URL obj = RoundRobin();
         String urlParams = obj.toString() + "?param=" + param;
 
@@ -51,6 +50,12 @@ public class RemoteLogServiceInvoker {
         return response.toString();
     }
 
+    /**
+     * Select the URL to be invoked
+     * 
+     * @return the URL of the next log service to be invoked
+     * @throws MalformedURLException if there is a malformed URL
+     */
     private static URL RoundRobin() throws MalformedURLException {
         if (instance < 2) {
             instance += 1;
