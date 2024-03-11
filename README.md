@@ -45,15 +45,15 @@ Con la dirección http://localhost:8088/Response.html puede ver el formulario pa
 
 Si ingresa una cadena y le da clic en el botón de *Submit* se muestran la cadena almacenada con la fecha.
 
-![image](https://github.com/JessicaDMunozO/Taller6-AREP/assets/123814482/9c1f40d5-6fa6-4b1d-99a6-bbf460a075e2)
+![image](https://github.com/JessicaDMunozO/Taller6-AREP/assets/123814482/1898ef2f-72ce-4c17-910d-17653339829e)
 
 Con 10 cadenas se ve del siguiente modo:
 
-![image](https://github.com/JessicaDMunozO/Taller6-AREP/assets/123814482/03f1b5bc-a000-4c12-ad06-4161eb07992e)
+![image](https://github.com/JessicaDMunozO/Taller6-AREP/assets/123814482/afdb64cb-28a9-4efd-9aa6-c6167d4dfa31)
 
 Y al ingresar una cadena más, sólo va a mostrar las últimas 10 cadenas registradas, por ende ya no mostraría el registro inicial con la cadena "hola"
 
-![image](https://github.com/JessicaDMunozO/Taller6-AREP/assets/123814482/401ce65b-714b-440e-bcb7-40a9c01e26f3)
+![image](https://github.com/JessicaDMunozO/Taller6-AREP/assets/123814482/42f36b52-3eda-4879-8e54-54f8487dca67)
 
 ## Despliegue en AWS
 
