@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Log {
 
@@ -24,7 +25,7 @@ public class Log {
      * @param log  a string for the registry
      * @param date the date of the log
      */
-    public void addLog(String log, String date) {
+    public void addLog(String log, Date date) {
         Document newLog = new Document("log", log)
                 .append("date", date);
         logsCollection.insertOne(newLog);
@@ -42,7 +43,7 @@ public class Log {
         for (Document doc : lastLogs) {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("log", doc.getString("log"));
-            jsonObject.put("date", doc.getString("date"));
+            jsonObject.put("date", ((Date) doc.get("date")).toInstant().toString());
             jsonArray.put(jsonObject);
         }
 

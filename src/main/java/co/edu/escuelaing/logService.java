@@ -19,7 +19,7 @@ public class LogService {
             res.type("application/json");
 
             String param = req.queryParams("param");
-            String date = new Date().toString();
+            Date date = new Date();
             log.addLog(param, date);
 
             JSONArray jsonArray = log.listLastTenLogs();
