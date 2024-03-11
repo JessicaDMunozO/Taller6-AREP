@@ -56,6 +56,7 @@ Y al ingresar una cadena más, sólo va a mostrar las últimas 10 cadenas regist
 ![image](https://github.com/JessicaDMunozO/Taller6-AREP/assets/123814482/42f36b52-3eda-4879-8e54-54f8487dca67)
 
 ## Despliegue en AWS
+https://youtu.be/iCIAkcuV7bs
 
 ## Construido con
 Maven - Gestión de dependencias
