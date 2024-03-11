@@ -23,8 +23,8 @@ esto se usan los comandos `docker build -t dockerservice -f Dockerfile.logservic
 5. Con Docker
 
 Para descargar las imágenes se ejecuta `docker pull jessicadmunozo/taller6arep:facade` y `docker pull jessicadmunozo/taller6arep:service`. Ahora se etiquetan las imágenes para que se pueda
-ejecutar correctamente, entonces se usan los comandos `docker tag jessicadmunozo/taller6arep:facade dockerfacade` y `docker tag jessicadmunozo/taller6arep:service dockerservice`. Por último
-se ejecuta el comando `docker-compose up -d`.
+ejecutar correctamente, entonces se usan los comandos `docker tag jessicadmunozo/taller6arep:facade dockerfacade` y `docker tag jessicadmunozo/taller6arep:service dockerservice`. Debe crear el archivo *docker-compose.yml*, para esto puede usar un editor como notepad y colocarle la configuración que se encuentra en este repositorio para
+dicho archivo. Por último se ejecuta el comando `docker-compose up -d`.
 
 ## Despliegue
 Con el proyecto corriendo debe abrir en un navegador la siguiente dirección: http://localhost:8088/Response.html.
