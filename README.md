@@ -31,12 +31,15 @@ Con el proyecto corriendo debe abrir en un navegador la siguiente dirección: ht
 
 ## Diseño
 Se construyeron dos contenedores *Docker*. El primero contiene todo lo relacionado con la fachada; el cliente y su formulario, la conexión a las instancias del *LogService* y 
-el balanceador de cargas. Se implementó el balanceador de cargas de *Round Robin* para que se pueda distribuir las solicitudes entre las tres instancias del servicio *LogService*.
+el balanceador de cargas. 
 
-El otro contenedor tiene todo lo relacionado con el servicio de registro y consulta *LogService*. Entonces se realiza la conexión a la base de datos, se añade la cadena 
-ingresada en el formulario a la base de datos y se muestra la fecha y la cadena de los últimos 10 registros en formato *JSON*.
+De modo que, en la clase fachada de *LogServerFacade* se define el servidor, que contiene un arreglo con las URLs de los servicios de *LogService* que son quienes atenderán las solicitudes. Para realizar la conexión a dichas instancias se usa la clase *RemoteLogServiceInvoker* que es la encargada también de distribuir las solicitudes entre las URLs por medio del balanceador de cargas de *Round Robin*. Dentro de este contenedor también se encuentra el formulario del cliente en el cuál puede ingresar la cadena que posteriormente será almacenada en la base de datos.
 
-Gracias al archivo *docker-compose* se tienen los 5 servicios necesarios. Las 3 instancias del contenedor del servicio, la fachada y la base de datos.
+El otro contenedor tiene todo lo relacionado con el servicio de registro y consulta *LogService*. De modo que, se realiza la conexión a la base de datos por medio de la clase *MongoUtil*, se define la ruta y se registra la cadena ingresada en el formulario a la base de datos con la fecha. Además, se devuelve un *JSON* que contiene los últimos 10 registros que fueron almacenados. Para esto se usa la clase *Log* que tiene los métodos para añdir y recuperar registros de la base de datos.
+
+Gracias al archivo *docker-compose* se tienen los 5 servicios necesarios. Las 3 instancias del contenedor del servicio, la fachada y la base de datos de Mongo. Lo cual fue desplegado en AWS con EC2.
+
+![image](https://github.com/JessicaDMunozO/Taller6-AREP/assets/123814482/3c934966-af71-472e-b247-3d4544589316)
 
 ## Evaluación
 Con la dirección http://localhost:8088/Response.html puede ver el formulario para ingresar una cadena.
