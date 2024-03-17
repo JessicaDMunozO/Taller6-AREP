@@ -56,7 +56,7 @@ public class RemoteLogServiceInvoker {
      * @return the URL of the next log service to be invoked
      * @throws MalformedURLException if there is a malformed URL
      */
-    private static URL RoundRobin() throws MalformedURLException {
+    public static URL RoundRobin() throws MalformedURLException {
         if (instance < 2) {
             instance += 1;
         } else {
